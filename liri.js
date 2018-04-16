@@ -34,6 +34,19 @@ spotify.search({
             console.log('Error: ' + err);
             return;
         }
+    var songs = data.tracks.items;
+    var data = [];
+    
+    for (var i = 0; i < songs.length; i++){
+        data.push({
+            'artist': songs[i]artist.map(bandName),
+            'song name: ': songs[i].name,
+            'song preview: ': songs[i].preview_url,
+            'album: ': songs[i]album.name,
+        });
+    }
+    console.log(data);
+    writeTolog(data);
     });
 
 

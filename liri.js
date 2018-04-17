@@ -75,7 +75,27 @@ var showMovie = function(movieName){
         movieName = 'The Return of the King';
     }
     var movieData = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=full&tomatoes=true&r=json";
+    request(movieData, function(error, response, body){
+        if (!error && response.statusCode == 200){
+            var data = [];
+            var jsonLib = JSON.parse(body);
 
+            data.push({
+                'Title: ' : jsonData.Title,
+                'Year: ' : jsonData.Year,
+                'Rated: ' : jsonData.Rated,
+                'IMDB Rating: ' : jsonData.imdbRating,
+                'Country: ' : jsonData.Country,
+                'Language: ' : jsonData.Language,
+                'Plot: ' : jsonData.Plot,
+                'Actors: ' : jsonData.Actors,
+                'Rotten Tomatoes Rating: ' : jsonData.tomatoRating,
+                'Rotton Tomatoes URL: ' : jsonData.tomatoURL,  
+            });
+            console.log(data);
+            writeToLog(data);
+        }
+    })
 }
 
 

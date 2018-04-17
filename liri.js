@@ -95,7 +95,44 @@ var showMovie = function(movieName){
             console.log(data);
             writeToLog(data);
         }
-    })
+    });
 }
+
+var request = function(){
+    fs.readFile("random.txt", "utf8", function(error, data){
+        console.log(data);
+        writeToLog(data);
+        var reqArr = data.split(',')
+            if (reqArr.length == 2){
+                pick(reqArr[0], reqArr[1]);
+            }
+            else if (reqArr.length == 1){  
+            }
+    });
+}
+
+var pickCase = function(caseData, functionData){
+    switch (caseData){
+        case 'get my tweets':
+            showTweets();
+            break;
+        case 'spotify song':
+            spotifyFind();
+            break;
+        case 'movies':
+            showMovie();
+            break;
+        case 'request':
+            request();
+            break;
+        default:
+            console.log('LIRI did not produce any results');
+    }
+}
+var execute = function(argOne, argTwo){
+    choose(argOne, argTwo);
+};
+
+
 
 

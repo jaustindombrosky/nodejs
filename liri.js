@@ -46,7 +46,7 @@ spotify.search({
         });
     }
     console.log(data);
-    writeTolog(data);
+    writeToLog(data);
     });
 };
 
@@ -132,6 +132,15 @@ var pickCase = function(caseData, functionData){
 var execute = function(argOne, argTwo){
     choose(argOne, argTwo);
 };
+execute(process.argv[2], process.argv[3]);
+var writeToLog = function(data){
+    fs.appendFile("log.txt", JSON.stringify(data), function(err){
+        if(err){
+            return console.log(err);
+        }
+        console.log("log.txt was updated");
+    });
+}
 
 
 

@@ -50,15 +50,32 @@ spotify.search({
     });
 };
 
+//twitter info and database
 var showTweets = function(){
     var user = new twitter(dataKeys.twitterKeys);
     var displayed = { screen_name: 'austin_dombrosky', count: 20 };
     user.get('statuses/user_timeline', displayed, function(error, tweets, response){
         if (!error){
             var data = []; 
-            for (var i =0; i <)
+            for (var i =0; i < tweets.length; i++){
+                data.push({
+                    'shown here: ' : tweets[i].shown_here,
+                    'Tweets: ' : tweets[i].text,
+                });
+            }
+            console.log(data);
+            writeToLog(data);
         }
-    })
+    });
+};
+
+//movie info and database
+var showMovie = function(movieName){
+    if (movieName === undefined){
+        movieName = 'The Return of the King';
+    }
+    var movieData = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=full&tomatoes=true&r=json";
+
 }
 
 

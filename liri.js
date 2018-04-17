@@ -39,14 +39,26 @@ spotify.search({
     
     for (var i = 0; i < songs.length; i++){
         data.push({
-            'artist': songs[i]artist.map(bandName),
+            'artist': songs[i].artist.map(bandName),
             'song name: ': songs[i].name,
             'song preview: ': songs[i].preview_url,
-            'album: ': songs[i]album.name,
+            'album: ': songs[i].album.name,
         });
     }
     console.log(data);
     writeTolog(data);
     });
+};
+
+var showTweets = function(){
+    var user = new twitter(dataKeys.twitterKeys);
+    var displayed = { screen_name: 'austin_dombrosky', count: 20 };
+    user.get('statuses/user_timeline', displayed, function(error, tweets, response){
+        if (!error){
+            var data = []; 
+            for (var i =0; i <)
+        }
+    })
+}
 
 

@@ -10,7 +10,7 @@ require("dotenv").config();
 var dataKeys = require("./keys.js");
 var fs = require('fs');
 var twitter = require('twitter');
-var spotify = require('spotify');
+var spotify = require('node-spotify-api');
 var request = require('request');
 
 //artist name
@@ -105,6 +105,7 @@ var request = function(){
         var reqArr = data.split(',')
             if (reqArr.length == 2){
                 pick(reqArr[0], reqArr[1]);
+                //spotify find pass 2nd array
             }
             else if (reqArr.length == 1){  
             }
@@ -113,10 +114,10 @@ var request = function(){
 
 var pickCase = function(caseData, functionData){
     switch (caseData){
-        case 'get my tweets':
+        case 'get-my-tweets':
             showTweets();
             break;
-        case 'spotify song':
+        case 'spotify-this-song':
             spotifyFind();
             break;
         case 'movies':
@@ -130,7 +131,7 @@ var pickCase = function(caseData, functionData){
     }
 }
 var execute = function(argOne, argTwo){
-    choose(argOne, argTwo);
+    pickCase(argOne, argTwo);
 };
 execute(process.argv[2], process.argv[3]);
 var writeToLog = function(data){

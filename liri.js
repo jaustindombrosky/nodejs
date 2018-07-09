@@ -1,25 +1,17 @@
 require("dotenv").config();
 
-// Add the code required to import the keys.js file and store it in a variable.
-// You should then be able to access your keys information like so
-
-// link other files
-
-// var spotify = new Spotify(keys.spotify);
-// var client = new Twitter(keys.twitter);
+var spotify = new Spotify(keys.spotify);
+var client = new Twitter(keys.twitter);
 var dataKeys = require("./keys.js");
 var fs = require('fs');
 var twitter = require('twitter');
 var spotify = require('node-spotify-api');
 var request = require('request');
 
-//artist name
-
 var bandName = function(band){
     return band.name;
 };
 
-//Spotify Songs
 var spotifyFind = function(song){
     if (song === undefined){
         song = 'Ace of Spades';
@@ -50,7 +42,6 @@ spotify.search({
     });
 };
 
-//twitter info and database
 var showTweets = function(){
     var user = new twitter(dataKeys.twitterKeys);
     var displayed = { screen_name: 'austin_dombrosky', count: 20 };
@@ -69,7 +60,6 @@ var showTweets = function(){
     });
 };
 
-//movie info and database
 var showMovie = function(movieName){
     if (movieName === undefined){
         movieName = 'The Return of the King';
@@ -105,7 +95,6 @@ var request = function(){
         var reqArr = data.split(',')
             if (reqArr.length == 2){
                 pick(reqArr[0], reqArr[1]);
-                //spotify find pass 2nd array
             }
             else if (reqArr.length == 1){  
             }
